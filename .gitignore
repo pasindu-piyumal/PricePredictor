@@ -1,0 +1,34 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python caching
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Data and Datasets (Large files)
+*.csv
+*.xlsx
+
+# Machine Learning Models / Scalers / Weights
+# (Uncomment the lines below if you want to prevent pushing them to GitHub)
+# ml_models/model.h5
+# ml_models/min_max_scaler.pkl
+# model.h5
+# *.pkl
+# *.h5
+
+# IDE and System Files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

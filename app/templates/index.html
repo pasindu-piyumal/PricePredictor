@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>House Price Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+        
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container">
+                
+                <a class="navbar-brand fw-bold text-uppercase tracking-wide" href="/">PricePredictor</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-light active" aria-current="page" href="/">Home</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container mt-4">
+            <h1 class="text-center">House Price Prediction</h1>
+        </div>
+
+        <div class="container mt-5 mb-5">
+    <div class="card shadow-lg border-0 mx-auto" style="max-width: 800px;">
+        
+        <div class="card-header bg-primary text-white text-center py-3">
+            <h3 class="mb-0 fw-bold">Property Valuation Form</h3>
+        </div>
+        
+        <div class="card-body p-4 p-md-5 bg-light">
+            <p class="text-muted text-center mb-4">Please provide the exact property metrics below to generate a market price prediction.</p>
+            
+            <form action="/predict" method="post">
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="longitude" class="form-label fw-semibold">Longitude</label>
+                            <input type="number" step="any" class="form-control" id="longitude" name="longitude" placeholder="e.g. -122.23" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <div class="form-group">
+                            <label for="latitude" class="form-label fw-semibold">Latitude</label>
+                            <input type="number" step="any" class="form-control" id="latitude" name="latitude" placeholder="e.g. 37.88" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="age" class="form-label fw-semibold">Housing Median Age</label>
+                            <input type="number" step="any" class="form-control" id="age" name="age" placeholder="e.g. 41" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <div class="form-group">
+                            <label for="rooms" class="form-label fw-semibold">Total Rooms</label>
+                            <input type="number" step="any" class="form-control" id="rooms" name="rooms" placeholder="e.g. 880" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="bedrooms" class="form-label fw-semibold">Total Bedrooms</label>
+                            <input type="number" step="any" class="form-control" id="bedrooms" name="bedrooms" placeholder="e.g. 129" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <div class="form-group">
+                            <label for="population" class="form-label fw-semibold">Population</label>
+                            <input type="number" step="any" class="form-control" id="population" name="population" placeholder="e.g. 322" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="households" class="form-label fw-semibold">Households</label>
+                            <input type="number" step="any" class="form-control" id="households" name="households" placeholder="e.g. 126" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        <div class="form-group">
+                            <label for="income" class="form-label fw-semibold">Median Income</label>
+                            <input type="number" step="any" class="form-control" id="income" name="income" placeholder="e.g. 8.3252" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="proximity" class="form-label fw-semibold">Ocean Proximity</label>
+                            <select class="form-select" id="proximity" name="proximity" required>
+                                <option value="" selected disabled>-- Select Ocean Proximity --</option>
+                                <option value="&lt;1H OCEAN">&lt;1H Ocean</option>
+                                <option value="INLAND">Inland</option>
+                                <option value="NEAR OCEAN">Near Ocean</option>
+                                <option value="NEAR BAY">Near Bay</option>
+                                <option value="ISLAND">Island</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-4 text-secondary">
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold shadow-sm">Predict Price</button>
+            </form>
+        </div>
+
+        <div class="container mt-4">
+            {% if result %}
+            <p>predicted price</p>
+            <p>{{result}}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
